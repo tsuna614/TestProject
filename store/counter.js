@@ -10,6 +10,13 @@ const counterReducer = (state = initialState, action) => {
         ...state,
         allTodo: [...state.allTodo, content],
       };
+    case "DELETE_TODO":
+      const { index } = action.payload;
+      const updatedTodo = state.allTodo.filter((_, i) => i !== index);
+      return {
+        ...state,
+        allTodo: updatedTodo,
+      };
     default:
       return state;
   }
